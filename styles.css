@@ -40,7 +40,7 @@ nav li {
     color: #ffffff;
 }
 li:first-child {
-    font-size: 1.25em;
+    font-size: 2em;
     font-weight: bold;
     text-transform: none;
     font-variant: small-caps;
@@ -243,6 +243,9 @@ box-shadow: inset 0 0 15px #590242;
 		width: 834px;
         padding: 0;
 	}
+    input, label{
+        display: none;
+    }
 }
 @media screen and (max-width: 834px) {
     body{
@@ -264,5 +267,89 @@ box-shadow: inset 0 0 15px #590242;
     .content2{
         width: 375px;
     }
-
+    ul {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height .2s ease-out;
+    }
+   nav ul{
+        display: block;
+        width: 100%;
+        padding: 0;
+    }
+   #muzakmaker{
+        position: absolute;
+        top:15px;
+        left:145px;
+    }
+    #playlists{
+        display: grid;
+        grid-gap: 16px;
+        overflow-x: scroll;
+        padding: 16px;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-flow: column;
+        height: 320px;
+    }
+    #curated{
+        display: grid;
+        grid-gap: 16px;
+        overflow-x: scroll;
+        padding: 16px;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-flow: column;
+        height: 320px;
+    }
+    .playlist-item{
+        display: block;
+    }
+    label {
+        cursor: pointer;
+        display: inline-block;
+        padding: 28px 20px;
+        position: relative;
+        user-select: none;
+    }
+    label span {
+        background-color: #ffffff;
+        display: block;
+        height: 2px;
+        position: relative;
+        transition: background-color .2s ease-out;
+        width: 18px;
+    }
+    label span:before, label span:after {
+        background: #ffffff;
+        content: '';
+        display: block;
+        height: 100%;
+        position: absolute;
+        transition: all .2s ease-out;
+        width: 100%;
+    }
+    label span:before {
+        top: 5px;
+    }
+    label span:after {
+        top: -5px;
+    }
+    input {
+        display: none;
+    }
+    input:checked ~ ul {
+        max-height: 500px;
+    }
+    input:checked ~ label span {
+        background: transparent;
+    }
+    input:checked ~ label span:before {
+        transform: rotate(-45deg);
+    }
+    input:checked ~ label span:after {
+        transform: rotate(45deg);
+    }
+    input:checked ~ label:not(.steps) span:before, input:checked ~ label:not(.steps) span:after {
+        top: 0;
+    }
+    
 }
